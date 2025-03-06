@@ -1,5 +1,9 @@
 ﻿function FindProxyForURL( url, host )
 {
+    if ( dnsDomainIs(host, ".corp.splunk.telenor.net") ||
+         host == "corp.splunk.telenor.net" )
+       return 'DIRECT'; // Don't send Nova-splunk to tunnel
+    
     if (dnsDomainIs(host, ".splunk.telenor.net") ||
         dnsDomainIs(host, ".splunk.nsc.no") ||
         host == "splunk.telenor.net" ||
